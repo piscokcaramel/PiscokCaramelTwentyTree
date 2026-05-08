@@ -247,16 +247,16 @@ header .flex {
 }
 
 /* =========================================
-   HOME SECTION
+   HOME SECTION — FIXED
 ========================================= */
 .home {
-  min-height: 100vh;
+  /* Hapus min-height: 100vh — ini penyebab whitespace besar di HP */
   display: flex;
   align-items: center;
   background: linear-gradient(to bottom right, #fffdf8, #fdf6ec);
   position: relative;
   overflow: hidden;
-  padding-top: 8rem;
+  padding-top: 6.5rem; /* tinggi header */
 }
 
 html[data-theme="dark"] .home {
@@ -293,7 +293,7 @@ html[data-theme="dark"] .home {
   width: 100%;
   max-width: 1400px;
   margin: auto;
-  padding: 4rem 8%;
+  padding: 6rem 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1287,9 +1287,9 @@ html[data-theme="dark"] .box {
 
 .footer-bottom p { font-size: 1.3rem; color: #94a3b8; }
 .footer-bottom span { color: var(--green); font-weight: 600; }
+
 /* =========================================
    RESPONSIVE — Tablet (≤991px)
-   Ganti seluruh blok @media (max-width: 991px) yang lama
 ========================================= */
 @media (max-width: 991px) {
   html { font-size: 56%; }
@@ -1335,12 +1335,16 @@ html[data-theme="dark"] .box {
 
   .logo span { display: none; }
 
-  /* ── HOME: tetap berdampingan di tablet ── */
+  /* HOME: tetap berdampingan di tablet */
+  .home {
+    padding-top: 6.5rem;
+  }
+
   .home-container {
-    flex-direction: row;          /* <— kunci: tetap row */
+    flex-direction: row;
     align-items: center;
     text-align: left;
-    padding: 2rem 5%;
+    padding: 4rem 5%;
     gap: 2.5rem;
   }
 
@@ -1369,18 +1373,21 @@ html[data-theme="dark"] .box {
 
 /* =========================================
    RESPONSIVE — Mobile (≤768px)
-   Ganti seluruh blok @media (max-width: 768px) yang lama
 ========================================= */
 @media (max-width: 768px) {
   html { font-size: 54%; }
 
-  /* ── HOME: tetap berdampingan di HP ── */
+  .home {
+    padding-top: 6.5rem;
+  }
+
+  /* HOME: tetap berdampingan di HP */
   .home-container {
-    flex-direction: row;          /* <— tetap row */
+    flex-direction: row;
     align-items: center;
     text-align: left;
     gap: 1.5rem;
-    padding: 2rem 4%;
+    padding: 3rem 4%;
   }
 
   .home-content {
@@ -1388,7 +1395,7 @@ html[data-theme="dark"] .box {
   }
 
   .home-content h1 { font-size: 2.6rem; }
-  .home-content p  { font-size: 1.4rem; }
+  .home-content p  { font-size: 1.4rem; margin-bottom: 2rem; }
 
   .home-badge { font-size: 1.1rem; padding: .6rem 1.2rem; }
 
@@ -1429,22 +1436,29 @@ html[data-theme="dark"] .box {
 
 /* =========================================
    RESPONSIVE — Small Mobile (≤600px)
-   Ganti blok @media (max-width: 600px) yang lama
 ========================================= */
 @media (max-width: 600px) {
   html { font-size: 50%; }
   section { padding: 9rem 4% 4rem; }
 
-  /* ── HOME: masih berdampingan, tapi font lebih kecil ── */
-  .home-container {
-    gap: 1.2rem;
-    padding: 1.5rem 4%;
+  .home {
+    padding-top: 6rem;
   }
 
+  /* HOME: masih berdampingan, font lebih kecil */
+  .home-container {
+    gap: 1.2rem;
+    padding: 2.5rem 4%;
+  }
+
+  .home-content { flex: 1 1 50%; }
   .home-content h1 { font-size: 2.2rem; }
   .home-content p  { font-size: 1.3rem; margin-bottom: 1.5rem; }
 
   .home-btn { font-size: 1.2rem; padding: 1rem 1.6rem; }
+
+  .home-image { flex: 1 1 44%; }
+  .home-image img { max-width: 100%; border-radius: 14px; }
 
   .box-container { grid-template-columns: 1fr; }
   .variant-options { grid-template-columns: 1fr 1fr; }
@@ -1457,15 +1471,30 @@ html[data-theme="dark"] .box {
 
 /* =========================================
    RESPONSIVE — Extra Small (≤450px)
-   Ganti blok @media (max-width: 450px) yang lama
 ========================================= */
 @media (max-width: 450px) {
   html { font-size: 47%; }
 
   header .flex { padding: 1rem 4%; }
 
-  .home-content h1 { font-size: 1.9rem; }
-  .home-content p  { font-size: 1.2rem; }
+  .home {
+    padding-top: 5.8rem;
+  }
+
+  .home-container {
+    gap: 1rem;
+    padding: 2rem 4%;
+  }
+
+  .home-content { flex: 1 1 52%; }
+  .home-content h1 { font-size: 1.9rem; line-height: 1.2; }
+  .home-content p  { font-size: 1.2rem; margin-bottom: 1.2rem; }
+
+  .home-badge { font-size: .95rem; padding: .4rem .9rem; margin-bottom: 1rem; }
+
+  .home-btn { font-size: 1.1rem; padding: .9rem 1.4rem; }
+
+  .home-image { flex: 1 1 44%; }
 
   .price { font-size: 2.2rem; }
 
@@ -1479,4 +1508,21 @@ html[data-theme="dark"] .box {
   }
 
   .icons { gap: .5rem; }
+}
+
+/* =========================================
+   RESPONSIVE — Very Small (≤360px)
+========================================= */
+@media (max-width: 360px) {
+  html { font-size: 43%; }
+
+  .home-container {
+    gap: .8rem;
+    padding: 1.8rem 3%;
+  }
+
+  .home-content h1 { font-size: 1.7rem; }
+  .home-content p  { font-size: 1.1rem; }
+
+  .home-btn { font-size: 1rem; padding: .8rem 1.2rem; }
 }
