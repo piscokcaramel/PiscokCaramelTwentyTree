@@ -1287,26 +1287,20 @@ html[data-theme="dark"] .box {
 
 .footer-bottom p { font-size: 1.3rem; color: #94a3b8; }
 .footer-bottom span { color: var(--green); font-weight: 600; }
-
 /* =========================================
    RESPONSIVE — Tablet (≤991px)
+   Ganti seluruh blok @media (max-width: 991px) yang lama
 ========================================= */
 @media (max-width: 991px) {
   html { font-size: 56%; }
-
   section { padding: 10rem 5% 5rem; }
 
-  /* Header responsive */
   header .flex {
     padding: 1.2rem 5%;
     position: relative;
   }
 
-  .logo span {
-    font-size: 1.6rem;
-  }
-
-  /* Navbar jadi dropdown di tablet */
+  /* Navbar jadi dropdown */
   .navbar {
     position: absolute;
     top: 100%;
@@ -1337,43 +1331,34 @@ html[data-theme="dark"] .box {
     border-radius: 10px;
   }
 
-  /* Tampilkan hamburger */
-  #menu-bars {
-    display: flex !important;
-  }
+  #menu-bars { display: flex !important; }
 
-  /* Sembunyikan label logo di layar kecil agar tidak bertabrakan */
-  .logo span {
-    display: none;
-  }
+  .logo span { display: none; }
 
-  /* Home responsive */
+  /* ── HOME: tetap berdampingan di tablet ── */
   .home-container {
-    flex-direction: column-reverse;
-    text-align: center;
+    flex-direction: row;          /* <— kunci: tetap row */
+    align-items: center;
+    text-align: left;
     padding: 2rem 5%;
+    gap: 2.5rem;
   }
 
   .home-content {
-    flex: 1;
-    width: 100%;
+    flex: 1 1 45%;
   }
 
-  .home-content p {
-    margin: 0 auto 2.5rem;
-  }
+  .home-content h1 { font-size: 3.2rem; }
+  .home-content p  { font-size: 1.5rem; margin-bottom: 2rem; }
 
-  .home-content h1 { font-size: 4rem; }
-
-  .home-buttons { justify-content: center; }
+  .home-buttons { justify-content: flex-start; }
 
   .home-image {
-    flex: 1;
-    width: 100%;
+    flex: 1 1 45%;
   }
 
   .home-image img {
-    max-width: 480px;
+    max-width: 100%;
   }
 
   /* Lightbox arrows */
@@ -1384,33 +1369,53 @@ html[data-theme="dark"] .box {
 
 /* =========================================
    RESPONSIVE — Mobile (≤768px)
+   Ganti seluruh blok @media (max-width: 768px) yang lama
 ========================================= */
 @media (max-width: 768px) {
   html { font-size: 54%; }
 
-  .cart-sidebar {
-    width: 100%;
-    max-width: 100%;
+  /* ── HOME: tetap berdampingan di HP ── */
+  .home-container {
+    flex-direction: row;          /* <— tetap row */
+    align-items: center;
+    text-align: left;
+    gap: 1.5rem;
+    padding: 2rem 4%;
   }
+
+  .home-content {
+    flex: 1 1 50%;
+  }
+
+  .home-content h1 { font-size: 2.6rem; }
+  .home-content p  { font-size: 1.4rem; }
+
+  .home-badge { font-size: 1.1rem; padding: .6rem 1.2rem; }
+
+  .home-buttons { justify-content: flex-start; }
+
+  .home-btn {
+    font-size: 1.3rem;
+    padding: 1.1rem 2rem;
+  }
+
+  .home-image {
+    flex: 1 1 45%;
+  }
+
+  .home-image img { max-width: 100%; }
+
+  /* Cart & lainnya */
+  .cart-sidebar { width: 100%; max-width: 100%; }
 
   .box-container {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 2rem;
   }
 
-  .variant-options {
-    grid-template-columns: 1fr 1fr;
-  }
+  .variant-options { grid-template-columns: 1fr 1fr; }
+  .icons-container  { gap: 1.5rem; }
 
-  .icons-container {
-    gap: 1.5rem;
-  }
-
-  .home-image img {
-    max-width: 100%;
-  }
-
-  /* Icons header on mobile */
   .icons > i,
   .icons > a {
     width: 3.6rem;
@@ -1418,75 +1423,53 @@ html[data-theme="dark"] .box {
     font-size: 1.5rem;
   }
 
-  .footer-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .map-iframe {
-    height: 22rem;
-  }
+  .footer-container { grid-template-columns: 1fr; gap: 3rem; }
+  .map-iframe { height: 22rem; }
 }
 
 /* =========================================
    RESPONSIVE — Small Mobile (≤600px)
+   Ganti blok @media (max-width: 600px) yang lama
 ========================================= */
 @media (max-width: 600px) {
   html { font-size: 50%; }
-
   section { padding: 9rem 4% 4rem; }
 
-  .home-content h1 { font-size: 3.6rem; }
-  .home-content p  { font-size: 1.5rem; }
-
-  .home-btn {
-    width: 100%;
-    text-align: center;
+  /* ── HOME: masih berdampingan, tapi font lebih kecil ── */
+  .home-container {
+    gap: 1.2rem;
+    padding: 1.5rem 4%;
   }
 
-  .home-image img { max-width: 100%; }
+  .home-content h1 { font-size: 2.2rem; }
+  .home-content p  { font-size: 1.3rem; margin-bottom: 1.5rem; }
 
-  .box-container {
-    grid-template-columns: 1fr;
-  }
+  .home-btn { font-size: 1.2rem; padding: 1rem 1.6rem; }
 
-  .variant-options {
-    grid-template-columns: 1fr 1fr;
-  }
+  .box-container { grid-template-columns: 1fr; }
+  .variant-options { grid-template-columns: 1fr 1fr; }
 
-  .home-badge {
-    font-size: 1.2rem;
-    padding: .7rem 1.4rem;
-  }
+  .home-badge { font-size: 1rem; padding: .5rem 1rem; }
 
-  /* Toast lebih kecil di mobile */
-  #toast-container {
-    right: 1rem;
-    left: 1rem;
-  }
-
-  .toast {
-    min-width: unset;
-    max-width: 100%;
-  }
+  #toast-container { right: 1rem; left: 1rem; }
+  .toast { min-width: unset; max-width: 100%; }
 }
 
 /* =========================================
    RESPONSIVE — Extra Small (≤450px)
+   Ganti blok @media (max-width: 450px) yang lama
 ========================================= */
 @media (max-width: 450px) {
   html { font-size: 47%; }
 
-  header .flex {
-    padding: 1rem 4%;
-  }
+  header .flex { padding: 1rem 4%; }
 
-  .home-content h1 { font-size: 3.2rem; }
+  .home-content h1 { font-size: 1.9rem; }
+  .home-content p  { font-size: 1.2rem; }
+
   .price { font-size: 2.2rem; }
 
-  .box .content {
-    padding: 1.6rem;
-  }
+  .box .content { padding: 1.6rem; }
 
   .icons > i,
   .icons > a {
@@ -1495,7 +1478,5 @@ html[data-theme="dark"] .box {
     font-size: 1.4rem;
   }
 
-  .icons {
-    gap: .5rem;
-  }
+  .icons { gap: .5rem; }
 }
